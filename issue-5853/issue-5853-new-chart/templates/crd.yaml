@@ -45,6 +45,9 @@ spec:
               items:
                 type: string
               type: array
+            cache:
+              description: Wether to cache build image layers
+              type: boolean
             cpu:
               description: How much CPU is required
               type: string
