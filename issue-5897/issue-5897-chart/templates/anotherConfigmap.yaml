@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "issue-5897-chart.fullname" . }}-another-config
+data:
+  yetAnotherKey: yetAnotherValue
+  yetYetAnotherKey: lol

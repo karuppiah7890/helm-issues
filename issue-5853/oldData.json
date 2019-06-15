@@ -1,0 +1,145 @@
+{
+    "apiVersion": "apiextensions.k8s.io/v1beta1",
+    "kind": "CustomResourceDefinition",
+    "metadata": {
+        "creationTimestamp": null,
+        "labels": {
+            "controller-tools.k8s.io": "1.0"
+        },
+        "name": "builds.apps.example.com"
+    },
+    "spec": {
+        "additionalPrinterColumns": [
+            {
+                "JSONPath": ".status.status",
+                "name": "Status",
+                "type": "string"
+            },
+            {
+                "JSONPath": ".status.start_time",
+                "name": "Started",
+                "type": "string"
+            },
+            {
+                "JSONPath": ".status.completion_time",
+                "name": "Completed",
+                "type": "string"
+            }
+        ],
+        "group": "apps.example.com",
+        "names": {
+            "kind": "Build",
+            "plural": "builds"
+        },
+        "scope": "Namespaced",
+        "subresources": {
+            "status": {}
+        },
+        "validation": {
+            "openAPIV3Schema": {
+                "properties": {
+                    "apiVersion": {
+                        "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources",
+                        "type": "string"
+                    },
+                    "kind": {
+                        "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+                        "type": "string"
+                    },
+                    "metadata": {
+                        "type": "object"
+                    },
+                    "spec": {
+                        "properties": {
+                            "args": {
+                                "description": "Docker build args in the form of a list of key=value elements",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "type": "array"
+                            },
+                            "cpu": {
+                                "description": "How much CPU is required",
+                                "type": "string"
+                            },
+                            "cwd": {
+                                "description": "CWD is the working directory to be used inside the source.",
+                                "type": "string"
+                            },
+                            "dockerfile": {
+                                "description": "Dockerfile path inside cwd",
+                                "type": "string"
+                            },
+                            "env": {
+                                "description": "Environment variables",
+                                "type": "object"
+                            },
+                            "memory": {
+                                "description": "How much memory is required",
+                                "type": "string"
+                            },
+                            "source": {
+                                "description": "Source spec",
+                                "properties": {
+                                    "branch": {
+                                        "description": "If the type is git, the branch or tag to clone",
+                                        "type": "string"
+                                    },
+                                    "path": {
+                                        "description": "Path to the source, either a git repo or the pvc name.",
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "description": "Type of the source, either pvc or git",
+                                        "enum": [
+                                            "git",
+                                            "pvc"
+                                        ],
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "type",
+                                    "path"
+                                ],
+                                "type": "object"
+                            },
+                            "target": {
+                                "description": "Target spec",
+                                "properties": {
+                                    "image": {
+                                        "description": "Image that should be generated",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "image"
+                                ],
+                                "type": "object"
+                            }
+                        },
+                        "required": [
+                            "source",
+                            "target",
+                            "cwd",
+                            "dockerfile"
+                        ],
+                        "type": "object"
+                    },
+                    "status": {
+                        "properties": {
+                            "status": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "status"
+                        ],
+                        "type": "object"
+                    }
+                }
+            }
+        },
+        "version": "v1beta1"
+    }
+}

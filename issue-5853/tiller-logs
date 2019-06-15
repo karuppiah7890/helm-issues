@@ -1,0 +1,233 @@
+[main] 2019/06/09 08:31:09 Starting Tiller v2.14.0 (tls=false)
+[main] 2019/06/09 08:31:09 GRPC listening on :44134
+[main] 2019/06/09 08:31:09 Probes listening on :44135
+[main] 2019/06/09 08:31:09 Storage driver is ConfigMap
+[main] 2019/06/09 08:31:09 Max history per release is 0
+[tiller] 2019/06/09 08:31:41 getting history for release issue-5853
+[storage] 2019/06/09 08:31:41 getting release history for "issue-5853"
+[tiller] 2019/06/09 08:31:41 preparing update for issue-5853
+[storage] 2019/06/09 08:31:41 getting deployed releases from "issue-5853" history
+[storage] 2019/06/09 08:31:41 getting last revision of "issue-5853"
+[storage] 2019/06/09 08:31:41 getting release history for "issue-5853"
+[tiller] 2019/06/09 08:31:41 rendering issue-5853-chart chart using values
+[tiller] 2019/06/09 08:31:42 creating updated release for issue-5853
+[storage] 2019/06/09 08:31:42 creating release "issue-5853.v3"
+[tiller] 2019/06/09 08:31:42 performing update for issue-5853
+[tiller] 2019/06/09 08:31:42 executing 0 pre-upgrade hooks for issue-5853
+[tiller] 2019/06/09 08:31:42 hooks complete for pre-upgrade issue-5853
+[kube] 2019/06/09 08:31:42 building resources from updated manifest
+[kube] 2019/06/09 08:31:42 checking 1 resources for changes
+isUnstructured? false
+err: <nil>
+
+creating two way merge patch
+oldData: {"apiVersion":"apiextensions.k8s.io/v1beta1","kind":"CustomResourceDefinition","metadata":{"creationTimestamp":null,"labels":{"controller-tools.k8s.io":"1.0"},"name":"builds.apps.example.com"},"spec":{"additionalPrinterColumns":[{"JSONPath":".status.status","name":"Status","type":"string"},{"JSONPath":".status.start_time","name":"Started","type":"string"},{"JSONPath":".status.completion_time","name":"Completed","type":"string"}],"group":"apps.example.com","names":{"kind":"Build","plural":"builds"},"scope":"Namespaced","subresources":{"status":{}},"validation":{"openAPIV3Schema":{"properties":{"apiVersion":{"description":"APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources","type":"string"},"kind":{"description":"Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds","type":"string"},"metadata":{"type":"object"},"spec":{"properties":{"args":{"description":"Docker build args in the form of a list of key=value elements","items":{"type":"string"},"type":"array"},"cpu":{"description":"How much CPU is required","type":"string"},"cwd":{"description":"CWD is the working directory to be used inside the source.","type":"string"},"dockerfile":{"description":"Dockerfile path inside cwd","type":"string"},"env":{"description":"Environment variables","type":"object"},"memory":{"description":"How much memory is required","type":"string"},"source":{"description":"Source spec","properties":{"branch":{"description":"If the type is git, the branch or tag to clone","type":"string"},"path":{"description":"Path to the source, either a git repo or the pvc name.","type":"string"},"type":{"description":"Type of the source, either pvc or git","enum":["git","pvc"],"type":"string"}},"required":["type","path"],"type":"object"},"target":{"description":"Target spec","properties":{"image":{"description":"Image that should be generated","type":"string"}},"required":["image"],"type":"object"}},"required":["source","target","cwd","dockerfile"],"type":"object"},"status":{"properties":{"status":{"type":"string"}},"required":["status"],"type":"object"}}}},"version":"v1beta1"}}
+
+ newData: {"apiVersion":"apiextensions.k8s.io/v1beta1","kind":"CustomResourceDefinition","metadata":{"creationTimestamp":null,"labels":{"controller-tools.k8s.io":"1.0"},"name":"builds.apps.example.com"},"spec":{"additionalPrinterColumns":[{"JSONPath":".status.status","name":"Status","type":"string"},{"JSONPath":".status.start_time","name":"Started","type":"string"},{"JSONPath":".status.completion_time","name":"Completed","type":"string"}],"group":"apps.example.com","names":{"kind":"Build","plural":"builds"},"scope":"Namespaced","subresources":{"status":{}},"validation":{"openAPIV3Schema":{"properties":{"apiVersion":{"description":"APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources","type":"string"},"kind":{"description":"Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds","type":"string"},"metadata":{"type":"object"},"spec":{"properties":{"args":{"description":"Docker build args in the form of a list of key=value elements","items":{"type":"string"},"type":"array"},"cache":{"description":"Wether to cache build image layers","type":"boolean"},"cpu":{"description":"How much CPU is required","type":"string"},"cwd":{"description":"CWD is the working directory to be used inside the source.","type":"string"},"dockerfile":{"description":"Dockerfile path inside cwd","type":"string"},"env":{"description":"Environment variables","type":"object"},"memory":{"description":"How much memory is required","type":"string"},"source":{"description":"Source spec","properties":{"branch":{"description":"If the type is git, the branch or tag to clone","type":"string"},"path":{"description":"Path to the source, either a git repo or the pvc name.","type":"string"},"type":{"description":"Type of the source, either pvc or git","enum":["git","pvc"],"type":"string"}},"required":["type","path"],"type":"object"},"target":{"description":"Target spec","properties":{"image":{"description":"Image that should be generated","type":"string"}},"required":["image"],"type":"object"}},"required":["source","target","cwd","dockerfile"],"type":"object"},"status":{"properties":{"status":{"type":"string"}},"required":["status"],"type":"object"}}}},"version":"v1beta1"}}
+
+ versionedObject &CustomResourceDefinition{ObjectMeta:k8s_io_apimachinery_pkg_apis_meta_v1.ObjectMeta{Name:builds.apps.example.com,GenerateName:,Namespace:,SelfLink:,UID:,ResourceVersion:,Generation:0,CreationTimestamp:0001-01-01 00:00:00 +0000 UTC,DeletionTimestamp:<nil>,DeletionGracePeriodSeconds:nil,Labels:map[string]string{controller-tools.k8s.io: 1.0,},Annotations:map[string]string{},OwnerReferences:[],Finalizers:[],ClusterName:,Initializers:nil,ManagedFields:[],},Spec:CustomResourceDefinitionSpec{Group:apps.example.com,Version:v1beta1,Names:CustomResourceDefinitionNames{Plural:builds,Singular:,ShortNames:[],Kind:Build,ListKind:,Categories:[],},Scope:Namespaced,Validation:&CustomResourceValidation{OpenAPIV3Schema:&JSONSchemaProps{ID:,Schema:,Ref:nil,Description:,Type:,Format:,Title:,Default:nil,Maximum:nil,ExclusiveMaximum:false,Minimum:nil,ExclusiveMinimum:false,MaxLength:nil,MinLength:nil,Pattern:,MaxItems:nil,MinItems:nil,UniqueItems:false,MultipleOf:nil,Enum:[],MaxProperties:nil,MinProperties:nil,Required:[],Items:nil,AllOf:[],OneOf:[],AnyOf:[],Not:nil,Properties:map[string]JSONSchemaProps{apiVersion: {  <nil> APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false},kind: {  <nil> Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false},metadata: {  <nil>  object   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false},spec: {  <nil>  object   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [source target cwd dockerfile] nil [] [] [] nil map[args:{  <nil> Docker build args in the form of a list of key=value elements array   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] &JSONSchemaPropsOrArray{Schema:&JSONSchemaProps{ID:,Schema:,Ref:nil,Description:,Type:string,Format:,Title:,Default:nil,Maximum:nil,ExclusiveMaximum:false,Minimum:nil,ExclusiveMinimum:false,MaxLength:nil,MinLength:nil,Pattern:,MaxItems:nil,MinItems:nil,UniqueItems:false,MultipleOf:nil,Enum:[],MaxProperties:nil,MinProperties:nil,Required:[],Items:nil,AllOf:[],OneOf:[],AnyOf:[],Not:nil,Properties:map[string]JSONSchemaProps{},AdditionalProperties:nil,PatternProperties:map[string]JSONSchemaProps{},Dependencies:JSONSchemaDependencies{},AdditionalItems:nil,Definitions:JSONSchemaDefinitions{},ExternalDocs:nil,Example:nil,Nullable:false,},JSONSchemas:[],} [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} cache:{  <nil> Wether to cache build image layers boolean   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} cpu:{  <nil> How much CPU is required string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} cwd:{  <nil> CWD is the working directory to be used inside the source. string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} dockerfile:{  <nil> Dockerfile path inside cwd string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} env:{  <nil> Environment variables object   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} memory:{  <nil> How much memory is required string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} source:{  <nil> Source spec object   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [type path] nil [] [] [] nil map[branch:{  <nil> If the type is git, the branch or tag to clone string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} path:{  <nil> Path to the source, either a git repo or the pvc name. string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} type:{  <nil> Type of the source, either pvc or git string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [{[34 103 105 116 34]} {[34 112 118 99 34]}] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false}] nil map[] map[] nil map[] nil nil false} target:{  <nil> Target spec object   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [image] nil [] [] [] nil map[image:{  <nil> Image that should be generated string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false}] nil map[] map[] nil map[] nil nil false}] nil map[] map[] nil map[] nil nil false},status: {  <nil>  object   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [status] nil [] [] [] nil map[status:{  <nil>  string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false}] nil map[] map[] nil map[] nil nil false},},AdditionalProperties:nil,PatternProperties:map[string]JSONSchemaProps{},Dependencies:JSONSchemaDependencies{},AdditionalItems:nil,Definitions:JSONSchemaDefinitions{},ExternalDocs:nil,Example:nil,Nullable:false,},},Subresources:&CustomResourceSubresources{Status:&CustomResourceSubresourceStatus{},Scale:nil,},Versions:[],AdditionalPrinterColumns:[{Status string   0 .status.status} {Started string   0 .status.start_time} {Completed string   0 .status.completion_time}],Conversion:nil,},Status:CustomResourceDefinitionStatus{Conditions:[],AcceptedNames:CustomResourceDefinitionNames{Plural:,Singular:,ShortNames:[],Kind:,ListKind:,Categories:[],},StoredVersions:[],},}
+
+schema: {T:v1beta1.CustomResourceDefinition}
+
+CreateTwoWayMergePatchUsingLookupPatchMeta
+originalMap: map[apiVersion:apiextensions.k8s.io/v1beta1 kind:CustomResourceDefinition metadata:map[creationTimestamp:<nil> labels:map[controller-tools.k8s.io:1.0] name:builds.apps.example.com] spec:map[additionalPrinterColumns:[map[JSONPath:.status.status name:Status type:string] map[JSONPath:.status.start_time name:Started type:string] map[JSONPath:.status.completion_time name:Completed type:string]] group:apps.example.com names:map[kind:Build plural:builds] scope:Namespaced subresources:map[status:map[]] validation:map[openAPIV3Schema:map[properties:map[apiVersion:map[description:APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources type:string] kind:map[description:Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds type:string] metadata:map[type:object] spec:map[properties:map[args:map[description:Docker build args in the form of a list of key=value elements items:map[type:string] type:array] cpu:map[description:How much CPU is required type:string] cwd:map[description:CWD is the working directory to be used inside the source. type:string] dockerfile:map[description:Dockerfile path inside cwd type:string] env:map[description:Environment variables type:object] memory:map[description:How much memory is required type:string] source:map[description:Source spec properties:map[branch:map[description:If the type is git, the branch or tag to clone type:string] path:map[description:Path to the source, either a git repo or the pvc name. type:string] type:map[description:Type of the source, either pvc or git enum:[git pvc] type:string]] required:[type path] type:object] target:map[description:Target spec properties:map[image:map[description:Image that should be generated type:string]] required:[image] type:object]] required:[source target cwd dockerfile] type:object] status:map[properties:map[status:map[type:string]] required:[status] type:object]]]] version:v1beta1]]
+
+ modifiedMap: map[apiVersion:apiextensions.k8s.io/v1beta1 kind:CustomResourceDefinition metadata:map[creationTimestamp:<nil> labels:map[controller-tools.k8s.io:1.0] name:builds.apps.example.com] spec:map[additionalPrinterColumns:[map[JSONPath:.status.status name:Status type:string] map[JSONPath:.status.start_time name:Started type:string] map[JSONPath:.status.completion_time name:Completed type:string]] group:apps.example.com names:map[kind:Build plural:builds] scope:Namespaced subresources:map[status:map[]] validation:map[openAPIV3Schema:map[properties:map[apiVersion:map[description:APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources type:string] kind:map[description:Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds type:string] metadata:map[type:object] spec:map[properties:map[args:map[description:Docker build args in the form of a list of key=value elements items:map[type:string] type:array] cache:map[description:Wether to cache build image layers type:boolean] cpu:map[description:How much CPU is required type:string] cwd:map[description:CWD is the working directory to be used inside the source. type:string] dockerfile:map[description:Dockerfile path inside cwd type:string] env:map[description:Environment variables type:object] memory:map[description:How much memory is required type:string] source:map[description:Source spec properties:map[branch:map[description:If the type is git, the branch or tag to clone type:string] path:map[description:Path to the source, either a git repo or the pvc name. type:string] type:map[description:Type of the source, either pvc or git enum:[git pvc] type:string]] required:[type path] type:object] target:map[description:Target spec properties:map[image:map[description:Image that should be generated type:string]] required:[image] type:object]] required:[source target cwd dockerfile] type:object] status:map[properties:map[status:map[type:string]] required:[status] type:object]]]] version:v1beta1]]
+
+ schema: {T:v1beta1.CustomResourceDefinition}
+
+CreateTwoWayMergeMapPatchUsingLookupPatchMeta
+original: map[apiVersion:apiextensions.k8s.io/v1beta1 kind:CustomResourceDefinition metadata:map[creationTimestamp:<nil> labels:map[controller-tools.k8s.io:1.0] name:builds.apps.example.com] spec:map[additionalPrinterColumns:[map[JSONPath:.status.status name:Status type:string] map[JSONPath:.status.start_time name:Started type:string] map[JSONPath:.status.completion_time name:Completed type:string]] group:apps.example.com names:map[kind:Build plural:builds] scope:Namespaced subresources:map[status:map[]] validation:map[openAPIV3Schema:map[properties:map[apiVersion:map[description:APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources type:string] kind:map[description:Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds type:string] metadata:map[type:object] spec:map[properties:map[args:map[description:Docker build args in the form of a list of key=value elements items:map[type:string] type:array] cpu:map[description:How much CPU is required type:string] cwd:map[description:CWD is the working directory to be used inside the source. type:string] dockerfile:map[description:Dockerfile path inside cwd type:string] env:map[description:Environment variables type:object] memory:map[description:How much memory is required type:string] source:map[description:Source spec properties:map[branch:map[description:If the type is git, the branch or tag to clone type:string] path:map[description:Path to the source, either a git repo or the pvc name. type:string] type:map[description:Type of the source, either pvc or git enum:[git pvc] type:string]] required:[type path] type:object] target:map[description:Target spec properties:map[image:map[description:Image that should be generated type:string]] required:[image] type:object]] required:[source target cwd dockerfile] type:object] status:map[properties:map[status:map[type:string]] required:[status] type:object]]]] version:v1beta1]]
+
+ modifies: map[apiVersion:apiextensions.k8s.io/v1beta1 kind:CustomResourceDefinition metadata:map[creationTimestamp:<nil> labels:map[controller-tools.k8s.io:1.0] name:builds.apps.example.com] spec:map[additionalPrinterColumns:[map[JSONPath:.status.status name:Status type:string] map[JSONPath:.status.start_time name:Started type:string] map[JSONPath:.status.completion_time name:Completed type:string]] group:apps.example.com names:map[kind:Build plural:builds] scope:Namespaced subresources:map[status:map[]] validation:map[openAPIV3Schema:map[properties:map[apiVersion:map[description:APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources type:string] kind:map[description:Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds type:string] metadata:map[type:object] spec:map[properties:map[args:map[description:Docker build args in the form of a list of key=value elements items:map[type:string] type:array] cache:map[description:Wether to cache build image layers type:boolean] cpu:map[description:How much CPU is required type:string] cwd:map[description:CWD is the working directory to be used inside the source. type:string] dockerfile:map[description:Dockerfile path inside cwd type:string] env:map[description:Environment variables type:object] memory:map[description:How much memory is required type:string] source:map[description:Source spec properties:map[branch:map[description:If the type is git, the branch or tag to clone type:string] path:map[description:Path to the source, either a git repo or the pvc name. type:string] type:map[description:Type of the source, either pvc or git enum:[git pvc] type:string]] required:[type path] type:object] target:map[description:Target spec properties:map[image:map[description:Image that should be generated type:string]] required:[image] type:object]] required:[source target cwd dockerfile] type:object] status:map[properties:map[status:map[type:string]] required:[status] type:object]]]] version:v1beta1]]
+
+ schema{T:v1beta1.CustomResourceDefinition}
+
+ diffOptions: {true false false false}diffMaps
+key: metadata
+
+ originalValueTyped: map[creationTimestamp:<nil> labels:map[controller-tools.k8s.io:1.0] name:builds.apps.example.com]
+
+ modifiedValueTypedmap[creationTimestamp:<nil> labels:map[controller-tools.k8s.io:1.0] name:builds.apps.example.com]
+
+ patch: map[]
+
+schema: {v1beta1.CustomResourceDefinition}
+
+diffOptions: {true false false false}
+
+handleMapDiff
+key: metadata
+
+LookupPatchMetadataForStruct
+LookupPatchMetadataForStruct
+diffMaps
+key: labels
+
+ originalValueTyped: map[controller-tools.k8s.io:1.0]
+
+ modifiedValueTypedmap[controller-tools.k8s.io:1.0]
+
+ patch: map[]
+
+schema: {v1.ObjectMeta}
+
+diffOptions: {true false false false}
+
+handleMapDiff
+key: labels
+
+LookupPatchMetadataForStruct
+LookupPatchMetadataForStruct
+diffMaps
+key: spec
+
+ originalValueTyped: map[additionalPrinterColumns:[map[JSONPath:.status.status name:Status type:string] map[JSONPath:.status.start_time name:Started type:string] map[JSONPath:.status.completion_time name:Completed type:string]] group:apps.example.com names:map[kind:Build plural:builds] scope:Namespaced subresources:map[status:map[]] validation:map[openAPIV3Schema:map[properties:map[apiVersion:map[description:APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources type:string] kind:map[description:Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds type:string] metadata:map[type:object] spec:map[properties:map[args:map[description:Docker build args in the form of a list of key=value elements items:map[type:string] type:array] cpu:map[description:How much CPU is required type:string] cwd:map[description:CWD is the working directory to be used inside the source. type:string] dockerfile:map[description:Dockerfile path inside cwd type:string] env:map[description:Environment variables type:object] memory:map[description:How much memory is required type:string] source:map[description:Source spec properties:map[branch:map[description:If the type is git, the branch or tag to clone type:string] path:map[description:Path to the source, either a git repo or the pvc name. type:string] type:map[description:Type of the source, either pvc or git enum:[git pvc] type:string]] required:[type path] type:object] target:map[description:Target spec properties:map[image:map[description:Image that should be generated type:string]] required:[image] type:object]] required:[source target cwd dockerfile] type:object] status:map[properties:map[status:map[type:string]] required:[status] type:object]]]] version:v1beta1]
+
+ modifiedValueTypedmap[additionalPrinterColumns:[map[JSONPath:.status.status name:Status type:string] map[JSONPath:.status.start_time name:Started type:string] map[JSONPath:.status.completion_time name:Completed type:string]] group:apps.example.com names:map[kind:Build plural:builds] scope:Namespaced subresources:map[status:map[]] validation:map[openAPIV3Schema:map[properties:map[apiVersion:map[description:APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources type:string] kind:map[description:Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds type:string] metadata:map[type:object] spec:map[properties:map[args:map[description:Docker build args in the form of a list of key=value elements items:map[type:string] type:array] cache:map[description:Wether to cache build image layers type:boolean] cpu:map[description:How much CPU is required type:string] cwd:map[description:CWD is the working directory to be used inside the source. type:string] dockerfile:map[description:Dockerfile path inside cwd type:string] env:map[description:Environment variables type:object] memory:map[description:How much memory is required type:string] source:map[description:Source spec properties:map[branch:map[description:If the type is git, the branch or tag to clone type:string] path:map[description:Path to the source, either a git repo or the pvc name. type:string] type:map[description:Type of the source, either pvc or git enum:[git pvc] type:string]] required:[type path] type:object] target:map[description:Target spec properties:map[image:map[description:Image that should be generated type:string]] required:[image] type:object]] required:[source target cwd dockerfile] type:object] status:map[properties:map[status:map[type:string]] required:[status] type:object]]]] version:v1beta1]
+
+ patch: map[]
+
+schema: {v1beta1.CustomResourceDefinition}
+
+diffOptions: {true false false false}
+
+handleMapDiff
+key: spec
+
+LookupPatchMetadataForStruct
+LookupPatchMetadataForStruct
+diffMaps
+LookupPatchMetadataForStruct
+LookupPatchMetadataForStruct
+key: names
+
+ originalValueTyped: map[kind:Build plural:builds]
+
+ modifiedValueTypedmap[kind:Build plural:builds]
+
+ patch: map[]
+
+schema: {v1beta1.CustomResourceDefinitionSpec}
+
+diffOptions: {true false false false}
+
+handleMapDiff
+key: names
+
+LookupPatchMetadataForStruct
+LookupPatchMetadataForStruct
+diffMaps
+key: subresources
+
+ originalValueTyped: map[status:map[]]
+
+ modifiedValueTypedmap[status:map[]]
+
+ patch: map[]
+
+schema: {v1beta1.CustomResourceDefinitionSpec}
+
+diffOptions: {true false false false}
+
+handleMapDiff
+key: subresources
+
+LookupPatchMetadataForStruct
+LookupPatchMetadataForStruct
+diffMaps
+key: status
+
+ originalValueTyped: map[]
+
+ modifiedValueTypedmap[]
+
+ patch: map[]
+
+schema: {*v1beta1.CustomResourceSubresources}
+
+diffOptions: {true false false false}
+
+handleMapDiff
+key: status
+
+LookupPatchMetadataForStruct
+LookupPatchMetadataForStruct
+diffMaps
+key: validation
+
+ originalValueTyped: map[openAPIV3Schema:map[properties:map[apiVersion:map[description:APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources type:string] kind:map[description:Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds type:string] metadata:map[type:object] spec:map[properties:map[args:map[description:Docker build args in the form of a list of key=value elements items:map[type:string] type:array] cpu:map[description:How much CPU is required type:string] cwd:map[description:CWD is the working directory to be used inside the source. type:string] dockerfile:map[description:Dockerfile path inside cwd type:string] env:map[description:Environment variables type:object] memory:map[description:How much memory is required type:string] source:map[description:Source spec properties:map[branch:map[description:If the type is git, the branch or tag to clone type:string] path:map[description:Path to the source, either a git repo or the pvc name. type:string] type:map[description:Type of the source, either pvc or git enum:[git pvc] type:string]] required:[type path] type:object] target:map[description:Target spec properties:map[image:map[description:Image that should be generated type:string]] required:[image] type:object]] required:[source target cwd dockerfile] type:object] status:map[properties:map[status:map[type:string]] required:[status] type:object]]]]
+
+ modifiedValueTyped map[openAPIV3Schema:map[properties:map[apiVersion:map[description:APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources type:string] kind:map[description:Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds type:string] metadata:map[type:object] spec:map[properties:map[args:map[description:Docker build args in the form of a list of key=value elements items:map[type:string] type:array] cache:map[description:Wether to cache build image layers type:boolean] cpu:map[description:How much CPU is required type:string] cwd:map[description:CWD is the working directory to be used inside the source. type:string] dockerfile:map[description:Dockerfile path inside cwd type:string] env:map[description:Environment variables type:object] memory:map[description:How much memory is required type:string] source:map[description:Source spec properties:map[branch:map[description:If the type is git, the branch or tag to clone type:string] path:map[description:Path to the source, either a git repo or the pvc name. type:string] type:map[description:Type of the source, either pvc or git enum:[git pvc] type:string]] required:[type path] type:object] target:map[description:Target spec properties:map[image:map[description:Image that should be generated type:string]] required:[image] type:object]] required:[source target cwd dockerfile] type:object] status:map[properties:map[status:map[type:string]] required:[status] type:object]]]]
+
+ patch: map[]
+
+schema: {v1beta1.CustomResourceDefinitionSpec}
+
+diffOptions: {true false false false}
+
+handleMapDiff
+key: validation
+
+LookupPatchMetadataForStruct
+LookupPatchMetadataForStruct
+diffMaps
+key: openAPIV3Schema
+
+ originalValueTyped: map[properties:map[apiVersion:map[description:APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources type:string] kind:map[description:Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds type:string] metadata:map[type:object] spec:map[properties:map[args:map[description:Docker build args in the form of a list of key=value elements items:map[type:string] type:array] cpu:map[description:How much CPU is required type:string] cwd:map[description:CWD is the working directory to be used inside the source. type:string] dockerfile:map[description:Dockerfile path inside cwd type:string] env:map[description:Environment variables type:object] memory:map[description:How much memory is required type:string] source:map[description:Source spec properties:map[branch:map[description:If the type is git, the branch or tag to clone type:string] path:map[description:Path to the source, either a git repo or the pvc name. type:string] type:map[description:Type of the source, either pvc or git enum:[git pvc] type:string]] required:[type path] type:object] target:map[description:Target spec properties:map[image:map[description:Image that should be generated type:string]] required:[image] type:object]] required:[source target cwd dockerfile] type:object] status:map[properties:map[status:map[type:string]] required:[status] type:object]]]
+
+ modifiedValueTypedmap[properties:map[apiVersion:map[description:APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources type:string] kind:map[description:Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds type:string] metadata:map[type:object] spec:map[properties:map[args:map[description:Docker build args in the form of a list of key=value elements items:map[type:string] type:array] cache:map[description:Wether to cache build image layers type:boolean] cpu:map[description:How much CPU is required type:string] cwd:map[description:CWD is the working directory to be used inside the source. type:string] dockerfile:map[description:Dockerfile path inside cwd type:string] env:map[description:Environment variables type:object] memory:map[description:How much memory is required type:string] source:map[description:Source spec properties:map[branch:map[description:If the type is git, the branch or tag to clone type:string] path:map[description:Path to the source, either a git repo or the pvc name. type:string] type:map[description:Type of the source, either pvc or git enum:[git pvc] type:string]] required:[type path] type:object] target:map[description:Target spec properties:map[image:map[description:Image that should be generated type:string]] required:[image] type:object]] required:[source target cwd dockerfile] type:object] status:map[properties:map[status:map[type:string]] required:[status] type:object]]]
+
+ patch: map[]
+
+schema: {*v1beta1.CustomResourceValidation}
+
+diffOptions: {true false false false}
+
+handleMapDiff
+key: openAPIV3Schema
+
+LookupPatchMetadataForStruct
+LookupPatchMetadataForStruct
+diffMaps
+key: properties
+
+ originalValueTyped: map[apiVersion:map[description:APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources type:string] kind:map[description:Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds type:string] metadata:map[type:object] spec:map[properties:map[args:map[description:Docker build args in the form of a list of key=value elements items:map[type:string] type:array] cpu:map[description:How much CPU is required type:string] cwd:map[description:CWD is the working directory to be used inside the source. type:string] dockerfile:map[description:Dockerfile path inside cwd type:string] env:map[description:Environment variables type:object] memory:map[description:How much memory is required type:string] source:map[description:Source spec properties:map[branch:map[description:If the type is git, the branch or tag to clone type:string] path:map[description:Path to the source, either a git repo or the pvc name. type:string] type:map[description:Type of the source, either pvc or git enum:[git pvc] type:string]] required:[type path] type:object] target:map[description:Target spec properties:map[image:map[description:Image that should be generated type:string]] required:[image] type:object]] required:[source target cwd dockerfile] type:object] status:map[properties:map[status:map[type:string]] required:[status] type:object]]
+
+ modifiedValueTyped map[apiVersion:map[description:APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources type:string] kind:map[description:Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds type:string] metadata:map[type:object] spec:map[properties:map[args:map[description:Docker build args in the form of a list of key=value elements items:map[type:string] type:array] cache:map[description:Wether to cache build image layers type:boolean] cpu:map[description:How much CPU is required type:string] cwd:map[description:CWD is the working directory to be used inside the source. type:string] dockerfile:map[description:Dockerfile path inside cwd type:string] env:map[description:Environment variables type:object] memory:map[description:How much memory is required type:string] source:map[description:Source spec properties:map[branch:map[description:If the type is git, the branch or tag to clone type:string] path:map[description:Path to the source, either a git repo or the pvc name. type:string] type:map[description:Type of the source, either pvc or git enum:[git pvc] type:string]] required:[type path] type:object] target:map[description:Target spec properties:map[image:map[description:Image that should be generated type:string]] required:[image] type:object]] required:[source target cwd dockerfile] type:object] status:map[properties:map[status:map[type:string]] required:[status] type:object]]
+
+ patch: map[]
+
+schema: {*v1beta1.JSONSchemaProps}
+
+diffOptions: {true false false false}
+
+handleMapDiff
+key: properties
+
+LookupPatchMetadataForStruct
+LookupPatchMetadataForStruct
+diffMaps
+key: spec
+
+ originalValueTyped: map[properties:map[args:map[description:Docker build args in the form of a list of key=value elements items:map[type:string] type:array] cpu:map[description:How much CPU is required type:string] cwd:map[description:CWD is the working directory to be used inside the source. type:string] dockerfile:map[description:Dockerfile path inside cwd type:string] env:map[description:Environment variables type:object] memory:map[description:How much memory is required type:string] source:map[description:Source spec properties:map[branch:map[description:If the type is git, the branch or tag to clone type:string] path:map[description:Path to the source, either a git repo or the pvc name. type:string] type:map[description:Type of the source, either pvc or git enum:[git pvc] type:string]] required:[type path] type:object] target:map[description:Target spec properties:map[image:map[description:Image that should be generated type:string]] required:[image] type:object]] required:[source target cwd dockerfile] type:object]
+
+ modifiedValueTyped map[properties:map[args:map[description:Docker build args in the form of a list of key=value elements items:map[type:string] type:array] cache:map[description:Wether to cache build image layers type:boolean] cpu:map[description:How much CPU is required type:string] cwd:map[description:CWD is the working directory to be used inside the source. type:string] dockerfile:map[description:Dockerfile path inside cwd type:string] env:map[description:Environment variables type:object] memory:map[description:How much memory is required type:string] source:map[description:Source spec properties:map[branch:map[description:If the type is git, the branch or tag to clone type:string] path:map[description:Path to the source, either a git repo or the pvc name. type:string] type:map[description:Type of the source, either pvc or git enum:[git pvc] type:string]] required:[type path] type:object] target:map[description:Target spec properties:map[image:map[description:Image that should be generated type:string]] required:[image] type:object]] required:[source target cwd dockerfile] type:object]
+
+ patch: map[]
+
+schema: {map[string]v1beta1.JSONSchemaProps}
+
+diffOptions: {true false false false}
+
+handleMapDiff
+key: spec
+
+LookupPatchMetadataForStruct
+LookupPatchMetadataForStruct
+erroring out here! this causes issue 5853! hmmm ...
+[kube] 2019/06/09 08:31:42 error updating the resource "builds.apps.example.com":
+	 failed to create patch: merging an object in json but data type is not struct, instead is: map
+[tiller] 2019/06/09 08:31:42 warning: Upgrade "issue-5853" failed: failed to create patch: merging an object in json but data type is not struct, instead is: map
+[storage] 2019/06/09 08:31:42 updating release "issue-5853.v1"
+[storage] 2019/06/09 08:31:42 updating release "issue-5853.v3"

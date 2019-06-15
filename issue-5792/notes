@@ -1,0 +1,4 @@
+Reproduce the issue
+
+1. Succesfully install a chart with NO values.yaml
+2. Upgrade the release with some values.yaml

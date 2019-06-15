@@ -1,0 +1,214 @@
+&CustomResourceDefinition{
+    ObjectMeta:k8s_io_apimachinery_pkg_apis_meta_v1.ObjectMeta{
+    Name:builds.apps.example.com,
+    GenerateName:,
+    Namespace:,
+    SelfLink:,
+    UID:,
+    ResourceVersion:,
+    Generation:0,
+    CreationTimestamp:0001-01-01 00:00:00 +0000 UTC,
+    DeletionTimestamp:<nil>,
+    DeletionGracePeriodSeconds:nil,
+    Labels:map[string]string{
+    controller-tools.k8s.io: 1.0,
+    },
+    
+    Annotations:map[string]string{
+
+},
+
+OwnerReferences:[],
+Finalizers:[],
+ClusterName:,
+Initializers:nil,
+ManagedFields:[],
+},
+
+Spec:CustomResourceDefinitionSpec{
+    Group:apps.example.com,
+    Version:v1beta1,
+    Names:CustomResourceDefinitionNames{
+    Plural:builds,
+    Singular:,
+    ShortNames:[],
+    Kind:Build,
+    ListKind:,
+    Categories:[],
+    },
+    
+    Scope:Namespaced,
+    Validation:&CustomResourceValidation{
+    OpenAPIV3Schema:&JSONSchemaProps{
+    ID:,
+    Schema:,
+    Ref:nil,
+    Description:,
+    Type:,
+    Format:,
+    Title:,
+    Default:nil,
+    Maximum:nil,
+    ExclusiveMaximum:false,
+    Minimum:nil,
+    ExclusiveMinimum:false,
+    MaxLength:nil,
+    MinLength:nil,
+    Pattern:,
+    MaxItems:nil,
+    MinItems:nil,
+    UniqueItems:false,
+    MultipleOf:nil,
+    Enum:[],
+    MaxProperties:nil,
+    MinProperties:nil,
+    Required:[],
+    Items:nil,
+    AllOf:[],
+    OneOf:[],
+    AnyOf:[],
+    Not:nil,
+    Properties:map[string]JSONSchemaProps{
+    apiVersion: {
+      <nil> APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value,
+       and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#resources string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false},
+      
+      kind: {
+      <nil> Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false},
+      
+      metadata: {
+      <nil>  object   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false},
+      
+      spec: {
+      <nil>  object   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [source target cwd dockerfile] nil [] [] [] nil map[args:{
+      <nil> Docker build args in the form of a list of key=value elements array   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] &JSONSchemaPropsOrArray{
+    Schema:&JSONSchemaProps{
+    ID:,
+    Schema:,
+    Ref:nil,
+    Description:,
+    Type:string,
+    Format:,
+    Title:,
+    Default:nil,
+    Maximum:nil,
+    ExclusiveMaximum:false,
+    Minimum:nil,
+    ExclusiveMinimum:false,
+    MaxLength:nil,
+    MinLength:nil,
+    Pattern:,
+    MaxItems:nil,
+    MinItems:nil,
+    UniqueItems:false,
+    MultipleOf:nil,
+    Enum:[],
+    MaxProperties:nil,
+    MinProperties:nil,
+    Required:[],
+    Items:nil,
+    AllOf:[],
+    OneOf:[],
+    AnyOf:[],
+    Not:nil,
+    Properties:map[string]JSONSchemaProps{
+
+},
+
+AdditionalProperties:nil,
+PatternProperties:map[string]JSONSchemaProps{
+
+},
+
+Dependencies:JSONSchemaDependencies{
+
+},
+
+AdditionalItems:nil,
+Definitions:JSONSchemaDefinitions{
+
+},
+
+ExternalDocs:nil,
+Example:nil,
+Nullable:false,
+},
+
+JSONSchemas:[],
+} [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} cache:{
+      <nil> Wether to cache build image layers boolean   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} cpu:{
+      <nil> How much CPU is required string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} cwd:{
+      <nil> CWD is the working directory to be used inside the source. string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} dockerfile:{
+      <nil> Dockerfile path inside cwd string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} env:{
+      <nil> Environment variables object   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} memory:{
+      <nil> How much memory is required string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} source:{
+      <nil> Source spec object   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [type path] nil [] [] [] nil map[branch:{
+      <nil> If the type is git,
+       the branch or tag to clone string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} path:{
+      <nil> Path to the source,
+       either a git repo or the pvc name. string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false} type:{
+      <nil> Type of the source,
+       either pvc or git string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [{
+    [34 103 105 116 34]} {
+    [34 112 118 99 34]}] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false}] nil map[] map[] nil map[] nil nil false} target:{
+      <nil> Target spec object   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [image] nil [] [] [] nil map[image:{
+      <nil> Image that should be generated string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false}] nil map[] map[] nil map[] nil nil false}] nil map[] map[] nil map[] nil nil false},
+      
+      status: {
+      <nil>  object   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [status] nil [] [] [] nil map[status:{
+      <nil>  string   nil <nil> false <nil> false <nil> <nil>  <nil> <nil> false <nil> [] <nil> <nil> [] nil [] [] [] nil map[] nil map[] map[] nil map[] nil nil false}] nil map[] map[] nil map[] nil nil false},
+      
+      },
+      
+      AdditionalProperties:nil,
+      PatternProperties:map[string]JSONSchemaProps{
+
+},
+
+Dependencies:JSONSchemaDependencies{
+
+},
+
+AdditionalItems:nil,
+Definitions:JSONSchemaDefinitions{
+
+},
+
+ExternalDocs:nil,
+Example:nil,
+Nullable:false,
+},
+
+},
+
+Subresources:&CustomResourceSubresources{
+    Status:&CustomResourceSubresourceStatus{
+
+},
+
+Scale:nil,
+},
+
+Versions:[],
+AdditionalPrinterColumns:[{
+    Status string   0 .status.status} {
+    Started string   0 .status.start_time} {
+    Completed string   0 .status.completion_time}],
+    Conversion:nil,
+    },
+    
+    Status:CustomResourceDefinitionStatus{
+    Conditions:[],
+    AcceptedNames:CustomResourceDefinitionNames{
+    Plural:,
+    Singular:,
+    ShortNames:[],
+    Kind:,
+    ListKind:,
+    Categories:[],
+    },
+    
+    StoredVersions:[],
+    },
+    
+    }
