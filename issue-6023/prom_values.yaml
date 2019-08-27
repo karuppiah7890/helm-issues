@@ -1,0 +1,45 @@
+coreDns:
+  service:
+    selector:
+      k8s-app: kube-dns
+
+kubeControllerManager:
+  service:
+    selector:
+      k8s-app: null
+      component: kube-controller-manager
+
+kubeEtcd:
+  enabled: false
+  endpoints: ["xxx.xxx.xxx"]
+  service:
+    port: '2379'
+  serviceMonitor:
+    scheme: https
+    insecureSkipVerify: true
+    certFile: "/etc/prometheus/secrets/etcd-cert/etcd.pem"
+    keyFile: "/etc/prometheus/secrets/etcd-cert/etcd-key.pem"
+prometheus:
+  prometheusSpec:
+    secrets: ["etcd-cert"]
+    replicas: 1
+    storageSpec:
+      volumeClaimTemplate:
+        metadata:
+          name: data
+        spec:
+          storageClassName: local-storage
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 130Gi
+    #    selector: {}
+
+kubeScheduler:
+  service:
+    selector:
+      k8s-app: null
+      component: kube-scheduler
+
+grafana:
+  enabled: true
