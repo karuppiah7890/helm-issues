@@ -1,0 +1,5 @@
+check how human readable resources are printed in kubectl based on the kubectl version used in helm 3
+
+check how manifests can be grouped into apiGroups and kinds and then shown in the form of kubectl human readable format
+
+using manifest - get k8s resources
