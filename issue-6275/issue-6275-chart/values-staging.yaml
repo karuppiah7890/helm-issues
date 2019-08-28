@@ -1,0 +1,5 @@
+workers: 
+  first_worker:
+    replicas: 1
+  second_worker:
+    replicas: 1

@@ -1,0 +1,8 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: worker-first-worker
+  labels:
+    name: worker-first-worker
+spec:
+  replicas: {{ required "ok" .Values.workers.first_worker.replicas}}
