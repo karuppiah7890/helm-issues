@@ -1,0 +1,74 @@
+affinity: {}
+clusterDomain: cluster.local
+image:
+  debug: false
+  pullPolicy: Always
+  registry: docker.io
+  repository: bitnami/mongodb
+  tag: 4.0.3
+livenessProbe:
+  enabled: true
+  failureThreshold: 6
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 5
+metrics:
+  enabled: false
+  image:
+    pullPolicy: IfNotPresent
+    registry: docker.io
+    repository: forekshub/percona-mongodb-exporter
+    tag: latest
+  podAnnotations:
+    prometheus.io/port: "9216"
+    prometheus.io/scrape: "true"
+  serviceMonitor:
+    additionalLabels: {}
+    alerting:
+      additionalLabels: {}
+      rules: {}
+    enabled: false
+mongodbDisableSystemLog: false
+mongodbEnableIPv6: true
+mongodbExtraFlags: []
+mongodbSystemLogVerbosity: 0
+nodeSelector: {}
+persistence:
+  accessModes:
+  - ReadWriteOnce
+  annotations: {}
+  enabled: true
+  size: 8Gi
+podAnnotations: {}
+podLabels: {}
+readinessProbe:
+  enabled: true
+  failureThreshold: 6
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 5
+replicaSet:
+  enabled: false
+  name: rs0
+  pdb:
+    minAvailable:
+      arbiter: 1
+      primary: 1
+      secondary: 1
+  replicas:
+    arbiter: 1
+    secondary: 1
+  useHostnames: true
+resources: {}
+securityContext:
+  enabled: true
+  fsGroup: 1001
+  runAsUser: 1001
+service:
+  annotations: {}
+  port: 27017
+  type: ClusterIP
+tolerations: []
+usePassword: true
