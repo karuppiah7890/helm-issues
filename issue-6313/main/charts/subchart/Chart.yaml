@@ -5,3 +5,4 @@ description: "subchart"
 home: "www.example.org"
 engine: "gotpl"
 tillerVersion: ">=2.14.1"
+version: 0.1.0
