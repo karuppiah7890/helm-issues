@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mypvc
+  labels:
+    app.kubernetes.io/name: mypvc
+spec:
+  storageClassName:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Mi
