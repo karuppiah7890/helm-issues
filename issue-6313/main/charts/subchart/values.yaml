@@ -1,0 +1,5 @@
+something: somevalue
+nestedKey:
+  anotherNestedKey:
+    yetAnotherNestedKey: value
+    yoValue: val

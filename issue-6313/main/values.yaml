@@ -1,2 +1,7 @@
 subchart:
   enabled: true
+thisHasAKey: andAValue
+nestedThingy:
+  anotherNestedThingy:
+    wowOneMore: Okay
+    hmm: right
