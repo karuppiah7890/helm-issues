@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  test-chart:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2019-10-31T22:46:58.03879+05:30"
+    description: A Helm chart for Kubernetes
+    digest: f3fa81e7ff38f1f3a981f0bf9cc5edab707493effae03007aec5328d89a71dc9
+    name: test-chart
+    urls:
+    - local://test-chart-0.1.0.tgz
+    version: 0.1.0
+generated: "2019-10-31T22:46:58.03821+05:30"
