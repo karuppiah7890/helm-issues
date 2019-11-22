@@ -1,0 +1,6 @@
+dependencies:
+- name: chart2
+  repository: http://localhost:5000
+  version: 0.1.0
+digest: sha256:b78a0288f33a59fb95697258dfef965a21c474a5d939f01a09bb046ec319ae3c
+generated: "2019-11-22T08:09:53.877264+05:30"

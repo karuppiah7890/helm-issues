@@ -1,0 +1,4 @@
+someValue: "dummyValue"
+
+chart2:
+  someValue: "dummyValueForChart2"
