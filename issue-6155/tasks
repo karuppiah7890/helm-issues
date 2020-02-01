@@ -1,0 +1,177 @@
+what about --merge option?
+
+if index.yaml is given, it will be converted to index object - OKAY
+
+and then used to create both index.json and index.yaml - FINE
+
+what about supporting merging with index.json ?
+
+should we add another option called --merge-json ? or --merge-json-index ?
+
+and how will this option work? as in, do we allow both --merge and --merge-json-index?
+or just one at a time?
+
+if we allow both, then we will have to convert both to index object, and then merge
+all of them.
+
+tests
+- add test for index.json creation
+- add test for merging with index.json given index.json to create
+index.yaml
+- add test for - only one of merge or merge json should be given, not both
+- put it all in t.Run() or what? But it's all sequential, and shouldn't be parallel.
+So I think this is okay? :)
+- write test for load index.json file
+- check test coverage for all the code you write
+- check which json package to use
+- write failure test cases?
+- change help to reflect the new features regarding index.json
+
+thoughts
+
+1. What are the tests doing?
+
+create temporary directory
+
+link or copy 2 chart tar balls into it
+
+run `helm repo index` command in the directory
+
+load the created index.yaml
+
+check the number entries in the index.yaml file
+
+check the entries in the index.yaml file (a particular one)
+- number of versions in the one entry
+- what is the latest version (first version)
+
+>>>>>>> I'm adding
+
+load the created index.json
+
+check the number entries in the index.json file
+
+check the entries in the index.json file (a particular one)
+- number of versions in the one entry
+- what is the latest version (first version)
+
+------
+
+to test merge, remove first two tar balls
+
+add a new chart and a new version in old chart
+
+run command `helm repo index --merge index.yaml` in directory
+
+load the created index.yaml
+
+check the number entries in the index.yaml file
+
+check the entries in the index.yaml file (a particular one)
+- number of versions in the one entry
+- what is the latest version (first version)
+
+>>>> I'm adding
+
+load the created index.json
+
+check the number entries in the index.json file
+
+check the entries in the index.json file (a particular one)
+- number of versions in the one entry
+- what is the latest version (first version)
+
+----
+
+remove index.yaml and test if merge works even when
+inex.yaml does not exist
+
+run command `helm repo index --merge index.yaml` in directory
+
+load the created index.yaml
+
+check the number entries in the index.yaml file
+
+check the entries in the index.yaml file (a particular one)
+- number of versions in the one entry
+- what is the latest version (first version)
+
+>>> I'm adding
+
+load the created index.json
+
+check the number entries in the index.json file
+
+check the entries in the index.json file (a particular one)
+- number of versions in the one entry
+- what is the latest version (first version)
+
+----
+>>> I'm adding
+
+remove index.json and test if merge works even when
+index.json does not exist
+
+run command `helm repo index --merge-json-index index.json` in directory
+
+load the created index.yaml
+
+check the number entries in the index.yaml file
+
+check the entries in the index.yaml file (a particular one)
+- number of versions in the one entry
+- what is the latest version (first version)
+
+load the created index.json
+
+check the number entries in the index.json file
+
+check the entries in the index.json file (a particular one)
+- number of versions in the one entry
+- what is the latest version (first version)
+
+----
+
+
+questions:
+1. is it okay to use the default encoding/json package?
+2. are these names okay?
+
+flag name -> --merge-json-index
+
+variable names -> destJSONIndex, jsonIndex, versionsInJSONIndex, 
+expectedVersionInJSONIndex, indexForMergeJSON, 
+
+function names -> WriteJSONFile, LoadIndexJSONFile, loadIndexJSON
+
+--- 
+okay, repo index kind of works now
+
+other commands to check under helm repo -
+
+add         Add a chart repository
+index       Generate an index file given a directory containing packaged charts
+list        List chart repositories
+remove      Remove a chart repository
+update      Update information of available charts locally from chart repositories
+
+---
+
+now for add, I need to see how to get index.json when it's present
+
+If it's not present, then use index.yaml
+
+questions
+- what if index.json present but there's some parsing issue? ignore it and use
+index.yaml ? 🤔
+but hey, if we do that, then we are ignoring the bad data in index.json and
+also ignoring index.json as a possible good source of truth and as a real
+index. so, if it's present, only that will be used. any errors, we will throw it 
+up as errors
+
+same for any case, when json format is present, that alone will be used and
+everything will be done to use it, and if there are errors, just error out
+
+but we need to show the user what index is being used. right? through
+logs may be
+
