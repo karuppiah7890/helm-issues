@@ -1,0 +1,32 @@
+FAIL: TestTemplateCmd (4.02s)
+    --- FAIL: TestTemplateCmd/check_name (0.22s)
+        helm_test.go:61: running cmd (attempt 1): template './../../pkg/chartutil/testdata/subpop/charts/subchart1'
+        helm_test.go:67: does not match golden file testdata/output/template.txt
+
+    --- FAIL: TestTemplateCmd/check_set_name (0.24s)
+        helm_test.go:61: running cmd (attempt 1): template './../../pkg/chartutil/testdata/subpop/charts/subchart1' --set service.name=apache
+        helm_test.go:67: does not match golden file testdata/output/template-set.txt
+
+FAIL: TestTemplateCmd/check_values_files (0.29s)
+        helm_test.go:61: running cmd (attempt 1): template './../../pkg/chartutil/testdata/subpop/charts/subchart1' --values '../../pkg/chartutil/testdata/subpop/charts/subchart1/charts/subchartA/values.yaml'
+        helm_test.go:67: does not match golden file testdata/output/template-values-files.txt
+
+FAIL: TestTemplateCmd/check_name_template (0.33s)
+        helm_test.go:61: running cmd (attempt 1): template './../../pkg/chartutil/testdata/subpop/charts/subchart1' --name-template='foobar-{{ b64enc "abc" }}-baz'
+        helm_test.go:67: does not match golden file testdata/output/template-name-template.txt
+
+FAIL: TestTemplateCmd/check_kube_api_versions (0.24s)
+        helm_test.go:61: running cmd (attempt 1): template --api-versions helm.k8s.io/test './../../pkg/chartutil/testdata/subpop/charts/subchart1'
+        helm_test.go:67: does not match golden file testdata/output/template-with-api-version.txt
+
+  --- FAIL: TestTemplateCmd/template_with_CRDs (0.20s)
+        helm_test.go:61: running cmd (attempt 1): template './../../pkg/chartutil/testdata/subpop/charts/subchart1' --include-crds
+        helm_test.go:67: does not match golden file testdata/output/template-with-crds.txt
+
+    --- FAIL: TestTemplateCmd/template_with_show-only_one (0.20s)
+        helm_test.go:61: running cmd (attempt 1): template './../../pkg/chartutil/testdata/subpop/charts/subchart1' --show-only templates/service.yaml
+        helm_test.go:67: does not match golden file testdata/output/template-show-only-one.txt
+
+   --- FAIL: TestTemplateCmd/template_with_show-only_multiple (0.15s)
+        helm_test.go:61: running cmd (attempt 1): template './../../pkg/chartutil/testdata/subpop/charts/subchart1' --show-only templates/service.yaml --show-only charts/subcharta/templates/service.yaml
+        helm_test.go:67: does not match golden file testdata/output/template-show-only-multiple.txt
