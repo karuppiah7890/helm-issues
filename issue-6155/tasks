@@ -175,3 +175,19 @@ everything will be done to use it, and if there are errors, just error out
 but we need to show the user what index is being used. right? through
 logs may be
 
+- what happens if a user is already using index.yaml ? I mean, that's the case
+now. when do they start using the json? let's say it's provided by the chart
+repository. so, if the chart repo is already added with yaml, keep using yaml?
+or "upgrade" to json? may be for now, if it's already yaml, keep using yaml,
+but when adding chart repo, if json is present, use json, and for updating too,
+use json, and for search too use json. no yaml should be present. I mean, if parsing
+is taking time, why even download it and parse it in the first place?
+
+- also, how are we making use of the fact that json is easier to parse? the benchmark
+uses a particular lib. should we use that for parsing json?
+
+looks like `github.com/buger/jsonparser` is what core maintainers want to use
+
+tasks:
+1. rebase with master!
+2. use go version 1.13.7
