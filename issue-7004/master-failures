@@ -1,0 +1,5 @@
+with go 1.14
+
+=== RUN   TestErrorFindChartInRepoURL
+    TestErrorFindChartInRepoURL: chartrepo_test.go:312: Expected error for bad chart URL, but got a different error (looks like "http://someserver/something" is not a valid chart repository or cannot be reached: Get "http://someserver/something/index.yaml": dial tcp: lookup someserver: no such host)
+--- FAIL: TestErrorFindChartInRepoURL (0.09s)
