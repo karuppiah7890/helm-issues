@@ -1,3 +1,26 @@
+Development Setup -
+1. Use go 1.13.x and use docker container for this
+
+if no containers are already present -
+
+$ docker run -v $(pwd):/helm --name helm3 -it golang:1.13 bash
+
+or else use the existing container
+
+$ docker start helm3
+$ docker exec -it helm3 bash
+
+To stop em
+
+$ docker stop helm3
+
+2. ALWAYS pull LATEST master version
+3. ALWAYS REBASE with master whenever you are going to start coding. That is,
+before you code anytime
+4. See if you can increment the golang version in the CI/CD and anywhere
+related to the repo. Increment to version 1.14.1 that is. Big change but not
+gonna harm anyone I guess
+
 what about --merge option?
 
 if index.yaml is given, it will be converted to index object - OKAY
@@ -191,3 +214,7 @@ looks like `github.com/buger/jsonparser` is what core maintainers want to use
 tasks:
 1. rebase with master!
 2. use go version 1.13.7
+
+not able to rebase with master currently. this is because I introduced some
+changes in the existing code. Let's not too much of that as much as possible.
+Instead add a new test function and add to it. Later we can merge it all!
