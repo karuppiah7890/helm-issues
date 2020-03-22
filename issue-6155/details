@@ -226,3 +226,22 @@ tasks:
 not able to rebase with master currently. this is because I introduced some
 changes in the existing code. Let's not too much of that as much as possible.
 Instead add a new test function and add to it. Later we can merge it all!
+
+made the changes such that they are all additions and not modifications (deletions + additions)
+
+able to rebase with master. able to run with go version 1.13.7
+
+currently getting this error -
+
+```
+--- FAIL: TestRepoIndexCmd (0.02s)
+    repo_index_test.go:199: expected 1 versions, got 3: repo.ChartVersions{(*repo.ChartVersion)(0xc00151d8b0), (*repo.ChartVersion)(0xc00151d900), (*repo.ChartVersion)(0xc00151d950)}
+```
+
+Let's fix this error before going forward! Okay, looks like the expected
+value was wrong. I finally went around and changed all the expected values from
+magic numbers to variables 😅 still have some refactoring to do. But let me
+see if it fixes the issue for now. Will come back and refactor more later!
+
+Cool! I fixed the issue! Now let's move on to something else, we can do the
+refactoring later!
