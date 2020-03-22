@@ -12,3 +12,28 @@ errors after successfully downloading the index.json file
 file. should other client side errors (4xx) be considered too? 🤔 check this out
 
 4. pass these tests by writing actual code
+
+details:
+1. okay, I can see that there's a temporary server that's being run - an actual
+server I guess, which hosts an index.yaml. At least that's what it looks like.
+Now I need to be able to host an index.json too - but not always - I mean, I
+should be able to tweak the way the server functions - as I want to be able to
+test a server that only hosts index.yaml and then a server that hosts both
+index.json and index.yaml. There WON'T be a case where the index.yaml won't be
+hosted - because if that happens, that would be a breaking change - removing
+an existing feature, without changing the major version of the software, as
+any clients dependent on the server, that are still old and only know about the
+index.yaml as an index will not be able to download the index then, if
+index.json becomes the only index. So, we will not be writing any tests for that
+breaking change case
+
+And why do we need the tweak with both behavior for the server? the behaviors
+being
+* server hosting only index.yaml
+* server hosting both index.yaml and index.json
+
+this is so that both the scenarios can be tested, as we want index.json to be
+used only if it's present, or else fallback to index.yaml - this will happen
+in new versions of helm that is, with the server being old, only hosting
+index.yaml but not index.json
+
