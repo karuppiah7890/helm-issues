@@ -1,0 +1,28 @@
+Development Setup -
+1. Use go 1.13.x and use docker container for this
+
+if no containers are already present -
+
+$ docker run -v $(pwd):/helm --name helm3 -it golang:1.13 bash
+$ curl -sSfL \
+https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
+-s -- -b $(go env GOPATH)/bin v1.24.0
+$ cd /helm
+$ make test
+
+
+or else use the existing container
+
+$ docker start helm3
+$ docker exec -it helm3 bash
+
+To stop em
+
+$ docker stop helm3
+
+2. ALWAYS pull LATEST master version
+3. ALWAYS REBASE with master whenever you are going to start coding. That is,
+before you code anytime
+4. See if you can increment the golang version in the CI/CD and anywhere
+related to the repo. Increment to version 1.14.1 that is. Big change but not
+gonna harm anyone I guess
