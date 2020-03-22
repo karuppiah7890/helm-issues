@@ -1,5 +1,12 @@
 # helm repo add command
 
+related files:
+cmd/helm/repo_add_test.go
+pkg/repo/repotest/
+pkg/repo/
+cmd/helm/testdata/output/repo-add.txt
+
+tasks:
 1. need to add tests for downloading index.json if that's present, and NOT
 download index.yaml
 
@@ -37,3 +44,19 @@ used only if it's present, or else fallback to index.yaml - this will happen
 in new versions of helm that is, with the server being old, only hosting
 index.yaml but not index.json
 
+2. some more things I noticed are - there's a command line level test - to
+see the output of the repo add command
+
+and then there's a functionality level test - to test if the downloaded
+index.yaml file is correct. here we need to add a test for index.json
+download too
+
+and then there's also a test for concurrent adding of repos - I'm guessing
+this handling of concurrency was recently done and hence the test. here
+we need to add a test for concurrent adding of repos when the repo index
+is a json index file
+
+micro tasks:
+1. make tweaks to the server to serve index.json file too.
+
+I was thinking of adding a boolean parameter to NewTempServer() function.
