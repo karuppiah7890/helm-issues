@@ -64,3 +64,13 @@ I was thinking of adding a boolean parameter to NewTempServer() function.
 may be I could add it to the Server struct as a field and based on the field's
 value, change the behavior of the server. I think that's the best idea ever :P
 haha
+
+2. add a command level test? hmm? I think we should add one separately for
+adding repo with index.json too. so yeah. let's do it. the output is the same
+as the previous test though, just that the input is different
+
+3. add feature level tests for index.json download - different scenarios. think
+about different scenarios. check above too
+
+4. add concurrency based repo addition tests. again, with different scenarios
+may be. think on this!
