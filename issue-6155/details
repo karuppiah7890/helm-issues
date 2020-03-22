@@ -27,7 +27,7 @@ before you code anytime
 related to the repo. Increment to version 1.14.1 that is. Big change but not
 gonna harm anyone I guess
 
-what about --merge option?
+what about --merge option? in repo index command
 
 if index.yaml is given, it will be converted to index object - OKAY
 
@@ -179,11 +179,13 @@ okay, repo index kind of works now
 other commands to check under helm repo -
 
 add         Add a chart repository
-index       Generate an index file given a directory containing packaged charts
+
 list        List chart repositories
 remove      Remove a chart repository
 update      Update information of available charts locally from chart repositories
 
+what command is done?
+index       Generate an index file given a directory containing packaged charts
 ---
 
 now for add, I need to see how to get index.json when it's present

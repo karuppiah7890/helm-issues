@@ -1,0 +1,14 @@
+1. check about how index files are created / produced and anything related to that
+
+- helm repo index command
+- ?
+
+2. check all the places where index files are used / consumed
+
+- helm repo add command
+- helm repo update command
+- helm install command
+- helm upgrade command
+- helm repo list?
+- helm repo remove?
+- helm search

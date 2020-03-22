@@ -1,0 +1,13 @@
+1. `$ helm repo index` command will create both index.yaml and index.json files
+2. --merge-json-index will take up index.json, as a counterpart for --merge which takes index.yaml
+
+discuss if this is needed. as json is a subset of yaml and every json is a valid
+yaml, so --merge can take up a json too. And if we don't want to parse the json
+differently (like fast and all), then we can just use --merge itself to get
+the index.json
+
+3. because of 2. only one of --merge or --merge-json-index can be used, NOT both
+
+if 2 becomes invalid, this is invalid too :)
+
+4. 
