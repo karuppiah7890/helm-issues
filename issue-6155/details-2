@@ -60,3 +60,7 @@ micro tasks:
 1. make tweaks to the server to serve index.json file too.
 
 I was thinking of adding a boolean parameter to NewTempServer() function.
+
+may be I could add it to the Server struct as a field and based on the field's
+value, change the behavior of the server. I think that's the best idea ever :P
+haha
