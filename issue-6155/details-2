@@ -1,2 +1,14 @@
 # helm repo add command
 
+1. need to add tests for downloading index.json if that's present, and NOT
+download index.yaml
+
+2. If any error occurs while downloading index.json - if it's 404 error, it's
+okay, for any other failure - fail the whole thing, don't fall back to
+index.yaml. Any other failure would mean - server errors (5xx), processing
+errors after successfully downloading the index.json file
+
+3. make sure that index.yaml is used if there's a 404 error for the index.json
+file. should other client side errors (4xx) be considered too? 🤔 check this out
+
+4. pass these tests by writing actual code
