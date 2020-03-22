@@ -16,3 +16,6 @@
 3. Finally, in repo_index_test.go - remove comment for t.Run() and 
 join the other test function into a t.Run() . The current code is to avoid
 any merge conflicts with master!
+
+4. check how this index.json repo index feature can help with bash
+autocompletion that marc commented about - do check it out!
