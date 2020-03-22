@@ -12,3 +12,7 @@
 - helm repo list?
 - helm repo remove?
 - helm search
+
+3. Finally, in repo_index_test.go - remove comment for t.Run() and 
+join the other test function into a t.Run() . The current code is to avoid
+any merge conflicts with master!

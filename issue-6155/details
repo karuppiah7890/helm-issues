@@ -245,3 +245,8 @@ see if it fixes the issue for now. Will come back and refactor more later!
 
 Cool! I fixed the issue! Now let's move on to something else, we can do the
 refactoring later!
+
+So, I'm planning to have separate commits for separate things. If I refactor
+this later, I'll need to put that as a separate commit 🤔 meh. It's okay!
+
+I do have to put it as a t.Run later. Not doing that now.
