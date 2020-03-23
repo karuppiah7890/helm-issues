@@ -93,3 +93,18 @@ about the catch. Like, I have already written some functions separately for json
 but only realized later that they are not needed as yaml parser can also
 understand json parser. Let's see what to do about that. May be for now, I'll
 have separate functions. Will note that down in the decisions!
+
+Back to tests! I'm writing all the tests at once! As much as possible :P
+
+I was just thinking about adding that boolean parameter to NewTempServer() but
+hey, the function is exported and Helm 3 has a strict policy of not breaking
+the API or features. Hmm. I think I'm just gonna add another method which
+will enable or disable serving JSON. Need to see how it will work - when it
+has to be called and stuff. Hmm. Feels a bit weird, as people could enable
+it or disable it anytime. Anyways, one thing that does not change is - there
+will still be a field in the Server struct which tells if index.json should be
+served or not. Actually, now that I come to think of it, should the default be
+both index.yaml and index.json ? 🤔 Nah. For now I'll let the default be
+just index.yaml, so that I don't change the existing tests at all. Enabling
+index.json will be a new thing for the Server.
+
