@@ -137,3 +137,9 @@ Now, what next. So, I'm able to serve index.json file now.
 Let's add a cmd level test to switch on index.json serving and add repo. This
 is infact going to pass. As it will download the yaml index now. Hmm. How about
 we add a feature level test first? That's better!
+
+For now I'm going to add a separate test function, but it's better if they
+are later converted to `t.Run()` functions
+
+Looks like my test is showing me some new things - about caches and all. Good.
+TDD is nice :P Too much tests 🤪 😆 Copy pasted tests with some new checks :P
