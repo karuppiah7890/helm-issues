@@ -108,3 +108,24 @@ both index.yaml and index.json ? 🤔 Nah. For now I'll let the default be
 just index.yaml, so that I don't change the existing tests at all. Enabling
 index.json will be a new thing for the Server.
 
+Okay, I was just checking what to do about the index.json - I think I can do
+this - I can have a method to toggle the index.json serving on and off. And
+whenever the toggle happens, I'll also create the index files - based on the
+toggle. And for toggle off after on - if index.json already exists - it will be
+removed / cleaned.
+
+On checking, I noticed that the server that's being run is run using the
+httptest package in `net/http` and a file server is used to serve the files
+in a directory. So, if I just put the files or remove them, everything should
+be fine ;) :)
+
+I noticed that there's so much code for a test server and was thinking if that
+will have tests - it indeed has one test file! 😮
+
+Let me write test for that too first 🙈and then implement it off!
+
+Okay, I wrote tests for toggle on and toggle off too! Let's see how the
+implementation goes!
+
+yay! I finished the implementation for toggling the serving of json index on
+and off! by default it's off! :)
