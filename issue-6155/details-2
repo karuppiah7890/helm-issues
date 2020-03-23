@@ -74,3 +74,14 @@ about different scenarios. check above too
 
 4. add concurrency based repo addition tests. again, with different scenarios
 may be. think on this!
+
+I just have one thought - I have had this before - I'm doing TDD - writing tests
+first and then code. According to TDD, you should write only failing tests,
+and I think you should write them one by one? I need to go read again. So, if
+that's the case, if I write one failing test and write just enough code to pass
+the test, the when I try to write the other tests, they will be passing which
+then would mean we don't need the test 🙈 But I want all the tests so that
+whatever features are present with respect to index.yaml should also be
+present for index.json
+
+The only catch is - index.json is json which is also a valid yaml.
