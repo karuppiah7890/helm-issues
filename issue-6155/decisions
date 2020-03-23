@@ -10,4 +10,17 @@ the index.json
 
 if 2 becomes invalid, this is invalid too :)
 
-4. 
+4. always have separate functions and stuff to handle index.json even though
+yaml parser can understand json too. 
+
+Have to ask maintainers about this - ? If we want to use a different parser for
+json - not sure about the pros in some cases, like repo add, but I think it will
+be useful for install and all, anyways, wherever different functions don't bring
+too much or no pros, the con is - extra code, extra maintenance. so yeah, let's
+see what the maintainers think about it. Note down the places where using the
+existing yaml parser is the same thing as using the json one - in terms of
+logic - that is, for example, if we want to parse the whole json similar to how
+we were parsing the whole yaml - then it's the same thing - but some libs can
+help with parsing the json partially and efficiently - anyways, but not sure if
+json one will be faster though, like generally, compared to yaml one - if it is,
+which is very possible as json vocabulary is smaller, then it's wow.

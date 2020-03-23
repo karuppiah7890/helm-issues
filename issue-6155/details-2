@@ -85,3 +85,11 @@ whatever features are present with respect to index.yaml should also be
 present for index.json
 
 The only catch is - index.json is json which is also a valid yaml.
+
+Anyways, let's write the test first!
+
+I was checking a bit of implementation too 🙈For a second I was thinking
+about the catch. Like, I have already written some functions separately for json
+but only realized later that they are not needed as yaml parser can also
+understand json parser. Let's see what to do about that. May be for now, I'll
+have separate functions. Will note that down in the decisions!
