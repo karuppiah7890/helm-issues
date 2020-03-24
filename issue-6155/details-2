@@ -207,3 +207,24 @@ parser if it's a json file, same intention as ours.
 I have asked one of the maintainers for suggestions. As this is going to
 decide where the tests for the download index file goes and the test for -
 continue with index.yaml if index.json does not exist.
+
+For now, I'm planning to wait a bit instead of choosing an option myself, the
+cost of change seems to be a bit high, so don't wanna put too much effort by
+just choosing something. I think I might choose the DownloadIndexFile()
+downloading one of index.json or index.yaml
+
+I also had some thoughts on repo update - need to see it's implementation,
+but initially I had this thought about how once index.json is present, only
+that must be used, but what if during add it was present, but during update
+it's not. So, at any point in time, the user should not have issues because of
+this behind the scenes work. I think we need to try as much as possible to
+avoid any issues because of this feature and make it as smooth as possible.
+
+Thinking of even avoiding ANY kind of errors that index.json feature has,
+and resorting to index.yaml . Have to confirm with maintainers on this though.
+And whatever happens, there must be exactly only one of index.json or index.yaml
+in the local, not both. It can change from index.json to index.yaml or vice
+versa. The only problem being - the repository server serving the index files
+should actually serve both index.json and index.yaml with the same content. If
+it does not, it's a problem - but yeah, we can say that it's a problem for
+the repo server to solve!

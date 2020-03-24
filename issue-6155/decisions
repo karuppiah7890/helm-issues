@@ -24,3 +24,16 @@ we were parsing the whole yaml - then it's the same thing - but some libs can
 help with parsing the json partially and efficiently - anyways, but not sure if
 json one will be faster though, like generally, compared to yaml one - if it is,
 which is very possible as json vocabulary is smaller, then it's wow.
+
+5. At any point in time, only one of index.yaml or index.json will be used.
+It can change at times from one to the other, during the update operation.
+As long as the file content is the same, it should not affect the user.
+
+6. Make the feature as smooth as possible - swallow any errors regarding
+index.json ? We are surely swallowing 404 error, meaning index.yaml will be
+used, but what about other errors, like server errors (5xx), auth errors (4xx),
+and errors like json parsing? decide with maintainers. Feels like all errors
+can be swallowed. But this way, user would never know what goes on behind the
+scenes, the index.json feature would never be used and no one would ever know
+why, but if it's used, it might be better
+
