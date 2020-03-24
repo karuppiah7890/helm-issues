@@ -20,6 +20,9 @@ file. should other client side errors (4xx) be considered too? 🤔 check this o
 
 4. pass these tests by writing actual code
 
+5. add test for goroutine version of adding repos too which have json index -
+for concurrent testing
+
 details:
 1. okay, I can see that there's a temporary server that's being run - an actual
 server I guess, which hosts an index.yaml. At least that's what it looks like.
@@ -143,3 +146,64 @@ are later converted to `t.Run()` functions
 
 Looks like my test is showing me some new things - about caches and all. Good.
 TDD is nice :P Too much tests 🤪 😆 Copy pasted tests with some new checks :P
+
+Let's see what the new checks to be added are!
+
+So, a test server is being run. I have enabled serving index.json file
+
+So, it's testing the repositories.yaml which has a list of repositories. In our
+case, that will not change, that's still a yaml file, with the same contents!
+
+The next thing that it tests is - cache index file - it seems like a yaml file,
+in our case, this should be a json file. So, let's add that first
+
+Then the next test is for a charts.txt which contains the chart names in
+a repository
+
+And then there's a test for adding the repository with --no-update as false,
+which should pass
+
+So, I have made all the changes for this now for this small feature - Let's
+run this.
+
+Running it gives the correct error
+
+```
+--- FAIL: TestRepoAdd_IndexJSON (0.03s)
+    /Users/karuppiahn/oss/github.com/helm/helm/cmd/helm/repo_add_test.go:143: Error cache json index file was not created for repository test-name
+FAIL
+```
+
+I'm going to implement the feature now. Now, from the `run()` function, I can
+see quite some stuff going on, like locking, doing the check for --no-update
+flag, and then finally the `DownloadIndexFile()`. I need to see what changes
+to make here!
+
+Actually, I remember thinking about this function. So, it's a exported function,
+so many are probably using this right now, to download the index file. It also
+has some return values - returns the cache file for index.yaml and also any
+errors. Now, if I implement downloading index.json too in this, it would be all
+done silently, and I can't change the return values, as that would break the
+API, and internally it's a lot of stuff, and people probably wouldn't even
+know about this or want to download the index.json silently like that but still
+return index.yaml cache. Wait, actually, if index.json is downloaded, only
+index.json cache should come. 
+
+There are actually multiple tests for the `DownloadIndexFile()` function. I
+think I should add tests there and then come back here to this function! IF I'm
+making changes to this function that is. What are the alternatives? What if I
+write another function with similar functionality for index.json download? 🤔
+Hmm. What are the pros and cons.
+
+Actually, if I implement the whole feature in the `DownloadIndexFile()`
+function, no one has to do anything to get all the new features - downloading
+index.json if it exists. Also, even if people treat the return value, the cache
+file as a yaml, it's fine, as every json is a valid yaml. But how will people
+even know if the file is a index.yaml file or a index.json file? They can use
+the suffix of the file name, but still. Why would people want to know if it's a
+index.json or a index.yaml ? So that they can do faster parsing using a json
+parser if it's a json file, same intention as ours. 
+
+I have asked one of the maintainers for suggestions. As this is going to
+decide where the tests for the download index file goes and the test for -
+continue with index.yaml if index.json does not exist.
