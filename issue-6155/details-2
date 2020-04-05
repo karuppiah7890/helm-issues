@@ -228,3 +228,95 @@ versa. The only problem being - the repository server serving the index files
 should actually serve both index.json and index.yaml with the same content. If
 it does not, it's a problem - but yeah, we can say that it's a problem for
 the repo server to solve!
+
+Okay, so I got some suggestions from Matt Farina, one of the core maintainers! :)
+Here's the slack conversation - 
+
+https://kubernetes.slack.com/archives/C51E88VDG/p1584978300178200
+
+I also have some general thoughts:
+* Make all functions and methods unexported (small case), wherever possible. As
+I'm not sure if the API should be exposed already. Maintainers can decided on
+that, I'll ask though. This is because, once exposed, we cannot have breaking
+changes in the API by changing the signature of functions and methods, until
+we have a new major version.
+* DownloadIndexFile will download index.json and save it, and save index.yaml
+too, then return index.yaml file path as before. When consuming, check if json
+file is present, then use it! When doing repo update, get index.json and update,
+actually overwrite I think, overwrite the index.json and index.yaml too, and if
+index.json is not present, then get index.yaml and overwrite index.yaml and
+index.json too. Ask maintainers how that sounds. During search, install, upgrade
+and other read related operations, use json index if it's present, or else use
+yaml index.
+
+So, this is what I'm going to do now - add tests for DownloadIndexFile function,
+and it will have all possible scenarios - happy paths, some bad paths I guess.
+Pass them and the repo add - that's just a test for the happy path at command
+level I guess, and not exactly a unit test I guess 😅
+
+Okay, let's write the tests for DownloadIndexFile now! :D
+
+I can see that it uses a test server, but it's not the same one that I used in
+the other test. I think I'll have to change it? 🤔Gotta see how to consistently
+use the other test server here too, or just add the index.json file as input
+here too, so that it get's served, but again, only when a toggle is on! So that
+we can do testing of different scenarios
+
+Okay, so, the other server that I used, it was having the charts and created
+the index (yaml and json) itself and served it. Here it's just the index that's
+being hosted. In my case I can just tweak this local test server to serve
+index.json too, based on some toggle I guess
+
+Okay, so I added to the existing index.yaml download test for DownloadIndexFile
+and added an extra test for index.json download.
+
+I also implemented the code and passed all the tests, including the test I added
+for repo add command at command level! :D
+
+Now I want to check the code coverage and also add some more tests may be or 
+modify the existing test if needed for more coverage.
+
+The coverage actually looks good. So, I'm not going to do anything to add more
+tests I guess. There are very very few error paths that aren't covered. Don't
+look very important to me right now. So, gonna skip that for now! 
+
+For repo add command level test, actually there's no way to tell if the index.yaml
+file was downloaded to create the two index files or index.json downloaded.
+
+May be I could have a toggle to disbale serving index.yaml file ? By default,
+the toggle will be off, meaning index.yaml will always be served. Let's see
+how to do that. This will be useful. 
+
+Also, I need to add tests for adding repo in a go routine. I think this
+shouldn't be affected by the current change I made. Let me check if it makes
+sense to add this for downloading index.json
+
+Now that I think about it, the feature I added - the code, has nothing to do
+with the locking and the go routine test. So, I'm not adding extra tests! :)
+
+I'm still adding the disable index yaml serving feature.
+
+Oops. I started writing code WITHOUT writing tests!!!! Okay, writing tests now
+🙈!!
+
+I also just noticed how I missed returning an error when enabling or disabling
+JSON index 🙈 gotta fix that too!
+
+I added the tests for yaml index serving toggle and added code too. In fact
+did some good performant code - you know, not calculating index if we aren't
+going to serve index file at all based on toggle.
+
+I passed the tests! 
+
+I also returned error for both the json and yaml serving toggle functions.
+
+I toggled off the index yaml in repo add test for downloading index json and it
+all still worked ;) :D
+
+Okay, I guess that's it for this test then!
+
+Now actually I'm a bit afraid that I'm making a lot of changes and adding tests
+that maintainers are going to say no to the tests. Hmm. 🙈
+
+Anyways, if that's the case, I'll accordingly make changes in the tests and the
+code. Next thing I gotta do is, check the repo update command!

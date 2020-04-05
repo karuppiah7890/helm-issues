@@ -8,7 +8,8 @@ $ curl -sSfL \
 https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
 -s -- -b $(go env GOPATH)/bin v1.24.0
 $ cd /helm
-$ make test
+$ make test # for all tests
+$ make test-unit # for unit tests
 
 
 or else use the existing container
