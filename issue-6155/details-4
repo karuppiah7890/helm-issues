@@ -1,0 +1,23 @@
+# helm install command
+
+Okay, I was checking the install command code. I see that in a few places,
+we either download the repo index temporarily or use the existing index, 
+depending upon different scenarios, and then parse the index file and then
+look for a particular version of the chart in the index. Now, I need to write
+a test to ensure that the index.json is parsed and not the index.yaml. Looking
+at the code, I have no idea how I'm going to do that. This is because of the
+fact that `DownloadIndexFile` method is always supposed to create both index.json
+and index.yaml - also, no errors will be thrown if index.json could not be
+created. So, there's no guarantee that index.json will exist - we always need
+to check and then use it - can't always just use index.json and leave out
+index.yaml
+
+Also, I was just thinking how json is a subset of yaml - not sure why we can't
+just create a index.yaml and put json content in it? 🤔 But I don't think that's
+still going to help us - as we will still parse it as yaml - and to parse it as
+json and to parse fast, we need to be sure that it's json content. Hmm.
+
+Okay, I have to think about how to write a failing test to test this. I really
+don't want to add code without tests. I'm afraid that's what it will come down
+to :/ I mean, I have usually seen myself do some crazy stuff - abstractions and
+what not to write tests. Don't wanna do that here. Let's see what we can do.

@@ -1,2 +1,32 @@
 # helm repo update command
 
+Let's check how the code for repo update works and see which parts of the code
+might need changes and what kind of changes.
+
+Okay, so, I can see that in the repo update command it just downloads the index
+file using `DownloadIndexFile()` method and it's being called in a go routine.
+I have already implemented the json download in the `DownloadIndexFile()` method,
+so I'm just going to add a test to repo update to make sure that json index
+is downloaded and is present along with index.yaml
+
+Okay, so I was just checking the tests that repo update command has. I think
+adding a test similar to repo add might be good - but then it's still testing
+`DownloadIndexFile()` method which has already been tested. So I wonder if I
+should write something like an integration test - something that tests that
+repo update command is calling methods and then checking if the index files
+are present. I think it's unnecessary. 
+
+I'm going to skip the test for this. Let's see what the maintainers have to
+say about this
+
+I can actually do one thing. Currently the test server is serving index.yaml I
+think, I could enabled index.json and disable index.yaml and check the same? 🤔
+But still, it's again the checking of `DownloadIndexFile()`. Hmm. I'll still
+skip it. Let's see. May be I could have skipped repo add test too. I think the
+repo add tests exist for all the other logic that it has - file locks and stuff
+and then a basic test for repo add - which checks for the presence of the index
+file. In repo update test, they are just not checking the presence of the
+file but are checking the output content alone.
+
+May be I'll ask the maintainers if I should remove the repo add test or if it's
+okay 👍

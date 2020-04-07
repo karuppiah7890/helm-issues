@@ -320,3 +320,8 @@ that maintainers are going to say no to the tests. Hmm. 🙈
 
 Anyways, if that's the case, I'll accordingly make changes in the tests and the
 code. Next thing I gotta do is, check the repo update command!
+
+I actually need to change the repo add test to check if the index yaml is present
+too! I just checked if index.json is present
+
+Added that test! 👍
