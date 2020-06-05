@@ -21,4 +21,6 @@ Actually even the `master` branch tests didn't run for me! 😅
 I have pushed the code to see what the CI thinks. I can see that
 the `master` branch circle CI tests are passing. Hmm..
 
-
+Weird. My branch works in a docker container. Hmm. So, works in linux
+with same golang version `1.14.3`. Anyways, gonna leave it at that and
+probably run tests in docker container 
