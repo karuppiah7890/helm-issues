@@ -6,7 +6,7 @@ if no containers are already present -
 $ docker run -v $(pwd):/helm --name helm3 -it golang:1.13 bash
 $ curl -sSfL \
 https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh \
--s -- -b $(go env GOPATH)/bin v1.24.0
+-s -- -b $(go env GOPATH)/bin v1.27.0
 $ cd /helm
 $ make test # for all tests
 $ make test-unit # for unit tests
