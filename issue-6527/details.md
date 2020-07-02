@@ -29,4 +29,31 @@ come into play.
 I wonder how golang handles the `ioutils.WriteFile` function which takes up a
 file permissions mode, in windows OS. I gotta check that.
 
+---
+
+The simplest thing I can think of is, first fix the issue related to
+`syscall.Umask` and make sure the build and tests don't fail in a windows system!
+
+---
+
+Now I'm checking how to do conditional compilation to build only some files
+and not build some files based on the platform, in this case, the OS, the windows
+OS.
+
+https://dave.cheney.net/2013/10/12/how-to-use-conditional-compilation-with-the-go-build-tool
+
+https://golang.org/pkg/go/build/#hdr-Build_Constraints
+
+I could move the `TestExtract` function alone to a separate file and make sure
+it's not compiled for windows. But then that wouldn't get tested in windows
+then.
+
+pkg/plugin/installer/http_installer_test.go
+
+---
+
+I commented out the `syscall.Umask` function calls and made changes to the test
+based on the functionality that it did, with respect to file permissions. And
+the tests pass in my Mac Machine. Gotta check in Windows next!
+
 
